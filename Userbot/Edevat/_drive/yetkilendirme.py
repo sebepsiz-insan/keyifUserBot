@@ -42,7 +42,7 @@ async def token_olustur(mesaj:Message, token:str): # fiziksel olarak dosya bağ�
     dosya = Storage(G_DRIVE_TOKEN_DOSYASI)
     dosya.put(kimlik_bilgileri)
 
-async def g_yetki():
+def g_yetki():
     # Kişisel bilgilei alır
     kimlik_bilgileri = Storage(G_DRIVE_TOKEN_DOSYASI).get()
     # httplib2.Http objesi oluşturur ve kişisel bilgilerinizle yetkilendirir.

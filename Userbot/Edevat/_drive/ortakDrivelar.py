@@ -4,7 +4,7 @@ from Userbot.Edevat._drive.yetkilendirme import g_yetki
 
 async def ortak_drive_listesi():
     """ telegram için ortak drive listesi çıkartır """
-    drive_service  = await g_yetki()
+    drive_service  = g_yetki()
     ortak_drivelar = drive_service.drives().list(pageSize=10).execute()
 
     # import json
@@ -16,3 +16,15 @@ async def ortak_drive_listesi():
         mesaj += f"\t__{drive['name']}__\n`{drive['id']}`\n\n"
 
     return mesaj
+
+async def ortak_drive_s():
+    """ telegram için ortak drive listesi çıkartır """
+    drive_service  = g_yetki()
+    ortak_drivelar = drive_service.drives().list(pageSize=10).execute()
+
+    return [
+        {
+            "adi" : drive['name'],
+            "id"  : drive['id']
+        } for drive in ortak_drivelar['drives']
+    ]
